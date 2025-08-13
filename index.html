@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Portfolio of V. Sahana - Cyber Security Specialist">
+<title>Sahana's Portfolio</title>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --primary-color: #1a1a1a;
+    --secondary-color: #f39c12;
+    --bg-gradient: linear-gradient(135deg, #6e8efb, #a777e3);
+    --card-bg: rgba(255, 255, 255, 0.1);
+    --text-light: #fff;
+    --text-dark: #333;
+}
+
+[data-theme="dark"] {
+    --bg-gradient: linear-gradient(135deg, #232526, #414345);
+    --card-bg: rgba(255, 255, 255, 0.05);
+    --text-light: #f1f1f1;
+    --text-dark: #fff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: var(--bg-gradient);
+    color: var(--text-light);
+    scroll-behavior: smooth;
+    transition: 0.3s;
+}
+
+header {
+    background: rgba(0,0,0,0.6);
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+header h1 {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+nav {
+    display: flex;
+    gap: 20px;
+}
+
+nav a {
+    color: var(--text-light);
+    text-decoration: none;
+    font-weight: 500;
+    position: relative;
+    font-size: 1rem;
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    background: var(--secondary-color);
+    left: 0;
+    bottom: -5px;
+    transition: 0.3s;
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+.theme-toggle {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    cursor: pointer;
+    font-size: 1.3rem;
+}
+
+/* Hero Section */
+.hero {
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.hero img {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    border: 5px solid var(--secondary-color);
+    margin-bottom: 20px;
+}
+
+.hero h2 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+}
+
+.typing {
+    color: var(--secondary-color);
+    font-weight: bold;
+    font-size: 1.4rem;
+}
+
+.hero .btn {
+    padding: 12px 25px;
+    background: var(--secondary-color);
+    color: #fff;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.hero .btn:hover {
+    background: #fff;
+    color: var(--secondary-color);
+}
+
+/* Sections */
+section {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 40px;
+    background: var(--card-bg);
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    opacity: 0;
+    transform: translateY(40px);
+    transition: 0.6s ease-out;
+}
+
+section.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+section h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+/* Skills Grid */
+.skills {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 15px;
+    text-align: center;
+}
+
+.skill-box {
+    background: rgba(255,255,255,0.1);
+    padding: 15px;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+/* Projects */
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.project-card {
+    background: rgba(255,255,255,0.1);
+    padding: 20px;
+    border-radius: 12px;
+    transition: 0.3s;
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+}
+
+.project-card a {
+    color: var(--secondary-color);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+iframe {
+    width: 100%;
+    height: 500px;
+    border-radius: 10px;
+}
+
+/* Contact Form */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+input, textarea {
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    font-size: 1rem;
+}
+
+button {
+    background: var(--secondary-color);
+    color: #fff;
+    padding: 12px;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #fff;
+    color: var(--secondary-color);
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+}
+</style>
+</head>
+<body>
+<header>
+    <h1>Sahana's Portfolio</h1>
+    <div class="theme-toggle" onclick="toggleTheme()">🌙</div>
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#resume">Resume</a>
+        <a href="#contact">Contact</a>
+    </nav>
+</header>
+
+<!-- Hero -->
+<div class="hero" id="home">
+    <img src="profile.jpg" alt="Profile Image">
+    <h2>Hi, I'm Sahana</h2>
+    <p><span class="typing"></span></p>
+    <a href="resume.pdf" class="btn" download>Download CV</a>
+</div>
+
+<!-- Skills -->
+<section id="skills">
+    <h2>Skills</h2>
+    <div class="skills">
+        <div class="skill-box">Python</div>
+        <div class="skill-box">Java</div>
+        <div class="skill-box">C++</div>
+        <div class="skill-box">SQL</div>
+        <div class="skill-box">Cyber Security</div>
+        <div class="skill-box">Machine Learning</div>
+    </div>
+</section>
+
+<!-- Projects -->
+<section id="projects">
+    <h2>Projects</h2>
+    <div class="project-grid">
+        <div class="project-card">
+            <h3>Legal & Ethical Issue Identifier</h3>
+            <p>Python-based system mapping legal queries to Indian laws.</p>
+            <a href="https://github.com/Saha-1926/legal-ethical-issues-navigator" target="_blank">View on GitHub</a>
+        </div>
+        <div class="project-card">
+            <h3>Plastic Detection using ESP32-CAM</h3>
+            <p>ML-based real-time detection system deployed on IoT hardware.</p>
+            <a href="https://github.com/Saha-1926/plastic-detection-esp32-cam" target="_blank">View on GitHub</a>
+        </div>
+    </div>
+</section>
+
+<!-- Resume -->
+<section id="resume">
+    <h2>My Resume</h2>
+    <iframe src="resume.pdf"></iframe>
+</section>
+
+<!-- Contact Form -->
+<section id="contact">
+    <h2>Contact Me</h2>
+    <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="_replyto" placeholder="Your Email" required>
+        <textarea name="message" placeholder="Your Message" rows="6" required></textarea>
+        <button type="submit">Send Message</button>
+    </form>
+</section>
+
+<footer>
+    <p>&copy; 2025 Sahana. All Rights Reserved.</p>
+</footer>
+
+<script>
+// Dark/Light Mode
+function toggleTheme() {
+    const body = document.body;
+    const theme = body.getAttribute("data-theme");
+    if (theme === "dark") {
+        body.setAttribute("data-theme", "light");
+        document.querySelector(".theme-toggle").textContent = "🌙";
+    } else {
+        body.setAttribute("data-theme", "dark");
+        document.querySelector(".theme-toggle").textContent = "☀️";
+    }
+}
+
+// Scroll Animation
+const sections = document.querySelectorAll("section");
+window.addEventListener("scroll", () => {
+    sections.forEach(sec => {
+        if (sec.getBoundingClientRect().top < window.innerHeight - 100) {
+            sec.classList.add("show");
+        }
+    });
+});
+
+// Typing Effect
+const roles = ["Cyber Security Enthusiast", "AI/ML Learner", "Software Developer"];
+let index = 0;
+let charIndex = 0;
+const typingEl = document.querySelector(".typing");
+
+function typeEffect() {
+    if (charIndex < roles[index].length) {
+        typingEl.textContent += roles[index].charAt(charIndex);
+        charIndex++;
+        setTimeout(typeEffect, 100);
+    } else {
+        setTimeout(eraseEffect, 2000);
+    }
+}
+
+function eraseEffect() {
+    if (charIndex > 0) {
+        typingEl.textContent = roles[index].substring(0, charIndex - 1);
+        charIndex--;
+        setTimeout(eraseEffect, 50);
+    } else {
+        index = (index + 1) % roles.length;
+        setTimeout(typeEffect, 500);
+    }
+}
+
+typeEffect();
+</script>
+</body>
+</html>
